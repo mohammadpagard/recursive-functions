@@ -23,7 +23,7 @@ def factorial(number: int) -> int:
         Example:
             factorial(4) -> 4*3*2*1
     """
-    
+
     result = 0
 
     if number == 0 or number == 1:
@@ -84,4 +84,36 @@ def power(base: int, exponent: int) -> int:
         return base
     else:
         result = base * power(base, exponent-1)
+        return result
+
+def fibonacci(number: int) -> int:
+    """
+        Calculate the fibonacci of a non-negative integer.
+
+        Args:
+            number (int): The non-negative integer whose finonacci is to be calculated.
+
+        Returns:
+            int: The fibonacci sequence of the input integer.
+            The last index is the final result of the fibonacci.
+
+        Raises:
+            ValueError: If the input is negative.
+
+        Example:
+            fibonacci(4) -> (0,1) 1+0=1, (0,1,1) 1+1=2, (0,1,1,2) 2+1=3
+    """
+
+    result = 0
+
+    if number == 0 or number == 1:
+        return number
+    elif number < 0:
+        raise ValueError("Fibonacci is not defined for negative numbers.")
+    else:
+        result = sum([fibonacci(number-2), fibonacci(number-1)])
+
+        for fib in range(1, result):
+            print(fib, end="\t")
+
         return result
